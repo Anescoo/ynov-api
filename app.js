@@ -35,7 +35,7 @@ router.post('/todos', (ctx) => {
 	}
 	todos.push(newTask)
 	console.log(todos);
-	ctx.status = 204
+	ctx.status = 200
 })
 
 router.put('/todos/:id', (ctx) => {
