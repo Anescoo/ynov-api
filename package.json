@@ -9,14 +9,24 @@
   "dependencies": {
     "@koa/router": "^12.0.0",
     "dotenv": "^16.0.3",
+    "joi": "^17.7.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
-    "koa-morgan": "^1.0.1"
+    "koa-morgan": "^1.0.1",
+    "koa-respond": "^2.1.0",
+    "mongoose": "^6.7.2"
   },
   "scripts": {
     "dev": "nodemon -r dotenv/config app.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+ "imports": {
+    "#config/*.js": "./src/config/*.js",
+    "#components/*.js": "./src/components/*.js",
+    "#routes/*.js": "./src/routes/*.js",
+    "#middlewares/*.js": "./src/middlewares/*.js",
+    "#services/*.js": "./src/services/*.js"
   }
-}
+  }
