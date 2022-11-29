@@ -23,12 +23,13 @@ export async function createTask (ctx) {
 			taskName: Joi.string().required(),
 			description: Joi.string(),
 			userName: Joi.string().required(),
-			importance: Joi.number().required()
+			importance: Joi.number().required(),
+			done: Joi.boolean().default(false)
 		})
 		const { error } = taskValidationSchema.validate(ctx.request.body)
 		if(error) throw new Error(error)
 
-		await Task.create({taskId: ctx.params.taskId, taskName: ctx.request.body.taskName, description: ctx.request.body.description, userName: ctx.request.body.userName, importance: ctx.request.body.importance})
+		await Task.create({taskId: ctx.params.taskId, taskName: ctx.request.body.taskName, description: ctx.request.body.description, userName: ctx.request.body.userName, importance: ctx.request.body.importance, done: ctx.request.body.done})
 		ctx.body = "Ajout de la tâche effectué."
 	} catch (e){
 		ctx.badRequest({ message: e.message })
@@ -41,7 +42,8 @@ export async function updateTask (ctx) {
 			taskName: Joi.string().required(),
 			description: Joi.string(),
 			userName: Joi.string().required(),
-			importance: Joi.number().required()
+			importance: Joi.number().required(),
+			done: Joi.boolean().default(false)
 		})
 		const { error } = taskValidationSchema.validate(ctx.request.body)
 		if(error) throw new Error(error)
